@@ -1,5 +1,6 @@
 import { Component } from "react";
-import { Form } from "./ContactsForm/ContactsForm";
+// import { Form } from "./ContactsForm/ContactsForm";
+import { LogicForm } from "./LogicForm/LogicForm";
 
 
 
@@ -38,7 +39,8 @@ export class App extends Component {
       // </div>
       
       <div>
-        <Form />
+        {/* <Form /> */}
+        <LogicForm />
 
       </div>
 )
