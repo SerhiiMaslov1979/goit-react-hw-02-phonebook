@@ -33,6 +33,13 @@ export class App extends Component {
 
   // }
 
+  handleSubmit = event => {
+    // что бы не перегрузилась страница по умолчанию
+    event.preventDefault();
+    console.log(this.state);
+    
+  }
+
   render() {
     return (
 
@@ -43,7 +50,7 @@ export class App extends Component {
       // </div>
       
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             Name <input type="text"
               name="name"
