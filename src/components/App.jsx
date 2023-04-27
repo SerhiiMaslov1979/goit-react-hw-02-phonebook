@@ -42,10 +42,15 @@ export class App extends Component {
       <div>
         {/* <Form /> */}
         <LogicForm />
+        <Filter onChange={e => this.setState({filter: e.target.value})} value={this.state.filter}/>
 
       </div>
 )
 
   }
 
+}
+
+function Filter({ onChange, value }) {
+  return <input type='text' onChange={onChange} value={value} />
 }
