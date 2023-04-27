@@ -4,6 +4,7 @@ import { LogicForm } from "./LogicForm/LogicForm";
 
 
 
+
 export class App extends Component {
    state = {
      contacts: [],
