@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import './LogicForm.css'
 
 
 
@@ -16,10 +17,10 @@ const initialValues = {
     number: '',
 }
 
-const Input = styled(Field)`
-font-size: 15px;
-color: #a2a2a2
-`;
+// const Input = styled(Field)`
+// font-size: 15px;
+// color: #a2a2a2
+// `;
 
 export const LogicForm = () => {
     const handleSubmit = (values, { resetForm }) => {
@@ -35,18 +36,18 @@ export const LogicForm = () => {
             onSubmit={handleSubmit}
         >
 
-        <Form autoComplete="off">
-                <label htmlFor="name">
+        <Form autoComplete="off" className='LogicForm__Form'>
+                <label htmlFor="name" className='LogicForm__name'>
                     Name
-                    <Input type="text" name='name' />
+                    <Field type="text" name='name' />
                     <ErrorMessage name="name" component='div' />
             </label>
-                <label htmlFor="number">
+                <label htmlFor="number" className='LogicForm__number'>
                     Number
-                    <Input type="text" name='number' />
+                    <Field type="text" name='number' />
                     <ErrorMessage name="number" component='div' />
             </label>
-            <button type='submit'>Add contact</button>
+            <button type='submit' className='LogicForm__btn'>Add contact</button>
         </Form>
 
         </Formik>

@@ -1,9 +1,20 @@
-// import React, { Component } from 'react'
+// export const Filter = ({ filter, onChangeInput }) => {
+    
 
-// export default class Filter extends Component {
 //   render() {
 //     return (
-//       <div>Filter</div>
+//         <div>
+//             <label htmlFor="">
+//                 Find contacts by name
+
+
+//             </label>
+//       </div>
 //     )
 //   }
 // }
+
+
+
+
+// export default Filter;

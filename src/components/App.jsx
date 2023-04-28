@@ -1,15 +1,31 @@
 import { Component } from "react";
 // import { Form } from "./ContactsForm/ContactsForm";
 import { LogicForm } from "./LogicForm/LogicForm";
+// import { nanoid } from "nanoid";
+import ContactsList from "./ContactsList/ContactsList";
+// import { Filter } from "./Filter/Filter";
+import './App.css';
 
 
 
 
 export class App extends Component {
    state = {
-     contacts: [],
+     contacts: [
+    {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+  ],
+       
      filter: '',
    };
+  
+  deleteContacts = (contactsId) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contacts => contacts.id !== contactsId),
+    }));
+  };
   
   // deleteTodo = todoid => {
 
@@ -31,6 +47,7 @@ export class App extends Component {
 
 
   render() {
+    const { contacts } = this.state;
     return (
 
       // <div>
@@ -39,10 +56,15 @@ export class App extends Component {
       //     onChange={this.handleInputChange} />
       // </div>
       
-      <div>
+      <div className="App__container">
+        <h1>Phonebook</h1>
         {/* <Form /> */}
         <LogicForm />
-        <Filter onChange={e => this.setState({filter: e.target.value})} value={this.state.filter}/>
+        <h2>Contacts</h2>
+         <h3>Find contacts by name</h3>
+        <Filter onChange={e => this.setState({ filter: e.target.value })} value={this.state.filter} />
+      
+        <ContactsList contacts={contacts} onDeleteContacts={this.deleteContacts} />
 
       </div>
 )
@@ -51,6 +73,6 @@ export class App extends Component {
 
 }
 
-function Filter({ onChange, value }) {
+function Filter ({ onChange, value }) {
   return <input type='text' onChange={onChange} value={value} />
 }
