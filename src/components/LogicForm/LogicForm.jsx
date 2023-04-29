@@ -3,33 +3,36 @@ import * as yup from 'yup';
 // import styled from 'styled-components';
 import './LogicForm.css'
 
+// const numberReg = /\+?\d{ 1, 4 }?[-.\s] ?\(?\d{ 1, 3 }?\)?[-.\s] ?\d{ 1, 4 } [-.\s] ?\d{ 1, 4 } [-.\s] ?\d{ 1, 9 }/;
 
+// const schema = yup.object().shape({
+ 
+//     name: yup.string().required(),
+//     number: yup.string().matches(numberReg, 'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +').required(),
+// });
 
 const schema = yup.object().shape({
  
     name: yup.string().required(),
-    number: yup.number().required(),
+    number: yup.string().required(),
 });
-
 
 const initialValues = {
     name: '',
     number: '',
 }
 
-// const Input = styled(Field)`
-// font-size: 15px;
-// color: #a2a2a2
-// `;
 
-export const LogicForm = () => {
+
+export const LogicForm = ({addContact}) => {
     const handleSubmit = (values, { resetForm }) => {
-        console.log(values);
+        addContact(values);
         resetForm();
 
 
     };
 
+    
     return (
         <Formik initialValues={initialValues}
             validationSchema={schema}
