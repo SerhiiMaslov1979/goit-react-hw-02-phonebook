@@ -1,9 +1,7 @@
 import { Component } from "react";
-// import { ContactForm } from "./ContactsForm/ContactsForm";
 import { LogicForm } from "./LogicForm/LogicForm";
 import { nanoid } from "nanoid";
 import ContactsList from "./ContactsList/ContactsList";
-// import { Filter } from "./Filter/Filter";
 import './App.css';
 
 
@@ -21,13 +19,6 @@ export class App extends Component {
      filter: '',
    };
   
-  // не працює
-  // onChangeInput = e => {
-  //   const { name, value } = e.currentTarget;
-  //   this.setState({ [name]: value });
-  // }
-  //спробую додати контакти в Cl
-
   addContact = ({ name, number }) => {
     if (this.state.contacts.some(contact => name.toLowerCase() === contact.name.toLowerCase())) {
       alert(`${name} is already in contacts`)
@@ -63,10 +54,8 @@ export class App extends Component {
       
       <div className="App__container">
         <h1>Phonebook</h1>
-        {/* <ContactForm /> */}
-        <LogicForm addContact={this.addContact} />
-        {/* <ContactForm addContact={this.addContact} /> */}
-        <h2>Contacts</h2>
+         <LogicForm addContact={this.addContact} />
+         <h2>Contacts</h2>
          <h3>Find contacts by name</h3>
         <Filter onChange={e => this.setState({ filter: e.target.value })} value={this.state.filter} />
       
