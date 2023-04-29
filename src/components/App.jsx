@@ -1,5 +1,5 @@
 import { Component } from "react";
-// import { Form } from "./ContactsForm/ContactsForm";
+// import { ContactForm } from "./ContactsForm/ContactsForm";
 import { LogicForm } from "./LogicForm/LogicForm";
 // import { nanoid } from "nanoid";
 import ContactsList from "./ContactsList/ContactsList";
@@ -43,11 +43,17 @@ export class App extends Component {
   //   this.setState({number: event.currentTarget.value});
 
   // }
+  getFilteredContacts = () => {
+    const { filter, contacts } = this.state;
+
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+  };
 
 
 
   render() {
-    const { contacts } = this.state;
+    // const { contacts } = this.state;
+    const filteredContacts = this.getFilteredContacts();
     return (
 
       // <div>
@@ -58,13 +64,14 @@ export class App extends Component {
       
       <div className="App__container">
         <h1>Phonebook</h1>
-        {/* <Form /> */}
+        {/* <ContactForm /> */}
         <LogicForm />
+        {/* <ContactForm addContact={this.addContact} /> */}
         <h2>Contacts</h2>
          <h3>Find contacts by name</h3>
         <Filter onChange={e => this.setState({ filter: e.target.value })} value={this.state.filter} />
       
-        <ContactsList contacts={contacts} onDeleteContacts={this.deleteContacts} />
+        <ContactsList contacts={filteredContacts} onDeleteContacts={this.deleteContacts} />
 
       </div>
 )

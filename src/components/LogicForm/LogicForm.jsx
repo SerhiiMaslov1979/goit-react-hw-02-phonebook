@@ -39,12 +39,15 @@ export const LogicForm = () => {
         <Form autoComplete="off" className='LogicForm__Form'>
                 <label htmlFor="name" className='LogicForm__name'>
                     Name
-                    <Field type="text" name='name' />
+                    <Field type="text"
+                        name='name' />
                     <ErrorMessage name="name" component='div' />
             </label>
                 <label htmlFor="number" className='LogicForm__number'>
                     Number
-                    <Field type="text" name='number' />
+                    <Field type="text"
+                        name='number'
+                    />
                     <ErrorMessage name="number" component='div' />
             </label>
             <button type='submit' className='LogicForm__btn'>Add contact</button>
