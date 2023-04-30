@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import './LogicForm.css'
+import PropTypes from 'prop-types';
 
 const numberReg = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
 
@@ -17,7 +18,7 @@ const initialValues = {
 
 
 
-export const LogicForm = ({addContact}) => {
+export const LogicForm = ({ addContact }) => {
     const handleSubmit = (values, { resetForm }) => {
         addContact(values);
         resetForm();
@@ -32,24 +33,28 @@ export const LogicForm = ({addContact}) => {
             onSubmit={handleSubmit}
         >
 
-        <Form autoComplete="off" className='LogicForm__Form'>
+            <Form autoComplete="off" className='LogicForm__Form'>
                 <label htmlFor="name" className='LogicForm__name'>
                     Name
                     <Field type="text"
                         name='name' />
                     <ErrorMessage name="name" component='div' />
-            </label>
+                </label>
                 <label htmlFor="number" className='LogicForm__number'>
                     Number
                     <Field type="text"
                         name='number'
                     />
                     <ErrorMessage name="number" component='div' />
-            </label>
-            <button type='submit' className='LogicForm__btn'>Add contact</button>
-        </Form>
+                </label>
+                <button type='submit' className='LogicForm__btn'>Add contact</button>
+            </Form>
 
         </Formik>
        
     )
+};
+
+LogicForm.propTypes = {
+    addContact: PropTypes.func.isRequired,
 }
